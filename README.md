@@ -34,4 +34,4 @@ revealEquations::step_by_step_eq(eqlist, before, after, title)
 ````
 
 and you can [see the slides themselves
-here](https://github.com/bcallaway11/revealEquations/revealEquations_demo.html).
+here](https://bcallaway11.github.io/revealEquations/revealEquations_demo.html).
