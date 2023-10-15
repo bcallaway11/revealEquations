@@ -1,0 +1,21 @@
+---
+title: "revealEquations Demo"
+format: revealjs
+---
+
+## Slide 1
+
+Some info
+
+```{r results="asis"}
+eqlist <- list("E[Y] &= E[Y|X=1]P(X=1) + E[Y|X=0]P(X=0) \\",
+               "&= 1 \\times 0.5 + 0 \\times 0.5 \\",
+               "&= 0.5")
+before <- "Suppose that we know that $E[Y|X=1]=1$, $E[Y|X=0]=0$, $P(X=1)=0.5$,
+ and $P(X=0) = 0.5$, then the law of iterated expecations implies that"
+after <- "concluding text"
+title <- "Law of Iterated Expectations Example"
+revealEquations::step_by_step_eq(eqlist, before, after, title)
+```
+
+

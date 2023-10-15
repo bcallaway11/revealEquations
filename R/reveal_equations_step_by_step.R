@@ -25,7 +25,7 @@
 #'
 #' @examples
 #' eqlist <- list("E[Y] &= E[Y|X=1]P(X=1) + E[Y|X=0]P(X=0) \\",
-#'                "&= 1 \times 0.5 + 0 \times 0.5 \\",
+#'                "&= 1 \\times 0.5 + 0 \\times 0.5 \\",
 #'                "&= 0.5")
 #' before <- "Suppose that we know that $E[Y|X=1]=1$, $E[Y|X=0]=0$, $P(X=1)=0.5$,
 #'  and $P(X=0) = 0.5$, then the law of iterated expecations implies that"
