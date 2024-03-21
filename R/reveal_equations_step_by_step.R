@@ -19,6 +19,9 @@
 #' @param title Optional title for the slide.
 #' @param presentation_type The type of presentation that the function is being
 #'  used for.  The default choice is `quarto`.  The other option is `xaringan`.
+#' @param count Whether or not to count the slide.  The default is `TRUE`.
+#'   If `TRUE`, the slides produced by `step_by_step_eq` will increase the slide
+#'   count by 1.  If `FALSE`, the slide count will not increase.
 #'
 #' @return NULL.  The function returns nothing but prints the output for
 #'  generating slides with equation appearing one after another.
@@ -35,7 +38,8 @@
 #'
 #' @export
 step_by_step_eq <- function(eqlist, before="", after="", title=" ",
-                            presentation_type="quarto") {
+                            presentation_type="quarto",
+                            count=TRUE) {
 
   if (presentation_type == "quarto") {
     # drop slide pauses in before content
@@ -48,7 +52,7 @@ step_by_step_eq <- function(eqlist, before="", after="", title=" ",
     out <- ""
     for (i in 1:length(eqlist)) {
       out <- paste0(out, "## ", title) # print title
-      if (i > 1) out <- paste0(out, " {visibility=\"uncounted\"} \n") else out <- paste0(out, " \n")
+      if ( (i > 1 ) | (!count) ) out <- paste0(out, " {visibility=\"uncounted\"} \n") else out <- paste0(out, " \n")
       # print before content
       if (i == 1) out <- paste0(out, before, "\n") else out <- paste0(out, before_inner, "\n")
       out <- paste0(out, "$$\n\\begin{aligned}\n",eqlist[[i]],"\n\\end{aligned}\n$$\n\n") # print equation
@@ -67,7 +71,7 @@ step_by_step_eq <- function(eqlist, before="", after="", title=" ",
 
     out <- ""
     for (i in 1:length(eqlist)) {
-      if (i > 1) out <- paste0(out, "count:false", "\n")
+      if ( (i > 1 ) | (!count) ) out <- paste0(out, "count:false", "\n")
       out <- paste0(out, "# ", title, "\n") # print title
       # print before content
       if (i == 1) out <- paste0(out, before, "\n") else out <- paste0(out, before_inner, "\n")
